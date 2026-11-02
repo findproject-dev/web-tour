@@ -1,0 +1,11 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookingFlow from '../../components/BookingFlow';
+import { tours } from '../../data/tours';
+---
+
+<Layout title="Booking Tour — FindPath" description="Mulai proses booking paket wisata Kalimantan Anda bersama FindPath.">
+  <div class="pt-20 bg-bg min-h-screen">
+    <BookingFlow client:load tours={tours} />
+  </div>
+</Layout>

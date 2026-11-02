@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.agents/
+
+# antigravity cli
+skills-lock.json

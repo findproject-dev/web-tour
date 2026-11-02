@@ -1,0 +1,175 @@
+---
+import { Globe } from "lucide-astro";
+
+export interface Props {
+  transparentNavbar?: boolean;
+}
+const { transparentNavbar = false } = Astro.props;
+---
+<header class={`fixed top-0 w-full z-50 transition-all duration-500 ${!transparentNavbar ? 'bg-bg shadow-sm border-b border-gray-200/60' : ''}`} id="navbar">
+  <!-- Inner background layer that transitions independently -->
+  <div id="navbar-bg" class={`absolute inset-0 transition-all duration-500 ${!transparentNavbar ? 'bg-bg' : 'bg-transparent'}`}></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0 flex items-center group" aria-label="FindPath — Beranda">
+        <span class={`font-display text-2xl tracking-wide transition-colors duration-300 ${!transparentNavbar ? 'text-primary' : 'text-white'}`} id="navbar-logo">FindPath</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navigasi utama">
+        <a href="/" class={`text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'}`}>Beranda</a>
+        <a href="/tentang-kami" class={`text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'}`}>Tentang Kami</a>
+        <a href="/destinasi" class={`text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'}`}>Destinasi</a>
+        <a href="/paket-tour" class={`text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'}`}>Paket Tour</a>
+        <a href="/kontak" class={`text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/90 hover:text-white'}`}>Kontak</a>
+      </nav>
+
+      <!-- CTA & Language (Desktop) -->
+      <div class="hidden lg:flex items-center gap-4 xl:gap-5">
+        <button class={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 nav-link ${!transparentNavbar ? 'text-gray-700 hover:text-primary' : 'text-white/80 hover:text-white'}`} aria-label="Pilih bahasa">
+          <Globe className="w-4 h-4" />
+          <span>ID</span>
+        </button>
+        <a href="/booking" class={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${!transparentNavbar ? 'bg-primary hover:bg-secondary text-white' : 'bg-white/15 hover:bg-white text-white hover:text-primary border border-white/40 hover:border-white'}`} id="navbar-cta">
+          Pesan Sekarang
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center lg:hidden gap-3">
+        <a href="/booking" class={`px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm ${!transparentNavbar ? 'bg-primary text-white border-transparent' : 'bg-white/15 border border-white/40 text-white'}`} id="mobile-navbar-cta">Pesan</a>
+        <button id="mobile-menu-btn" class={`p-1.5 focus:outline-none ${!transparentNavbar ? 'text-primary' : 'text-white'}`} aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="menu-icon block"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden absolute w-full shadow-2xl" aria-label="Menu mobile">
+    <div class="bg-primary/97 backdrop-blur-xl px-4 pt-2 pb-8 space-y-1 border-t border-white/10">
+      <a href="/" class="block px-4 py-3.5 rounded-xl text-base font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors">Beranda</a>
+      <a href="/tentang-kami" class="block px-4 py-3.5 rounded-xl text-base font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors">Tentang Kami</a>
+      <a href="/destinasi" class="block px-4 py-3.5 rounded-xl text-base font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors">Destinasi</a>
+      <a href="/paket-tour" class="block px-4 py-3.5 rounded-xl text-base font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors">Paket Tour</a>
+      <a href="/kontak" class="block px-4 py-3.5 rounded-xl text-base font-medium text-white/90 hover:bg-white/10 hover:text-white transition-colors">Kontak</a>
+      <div class="pt-4 px-4 flex items-center gap-2 text-white/60">
+        <Globe className="w-4 h-4" />
+        <span class="text-sm">Bahasa Indonesia (ID)</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn') as HTMLButtonElement;
+  const menu = document.getElementById('mobile-menu');
+  const menuIcon = btn?.querySelector('.menu-icon');
+  const closeIcon = btn?.querySelector('.close-icon');
+  const navbar = document.getElementById('navbar');
+  const navbarBg = document.getElementById('navbar-bg');
+  const navbarLogo = document.getElementById('navbar-logo');
+  const navbarCta = document.getElementById('navbar-cta');
+  const mobileNavbarCta = document.getElementById('mobile-navbar-cta');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Mobile menu toggle
+  btn?.addEventListener('click', () => {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isExpanded));
+    menu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+
+  // Close menu on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      btn?.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll transparency behavior
+  let scrolled = false;
+
+  function updateNavbar() {
+    const isTransparent = document.body.dataset.transparentNavbar === 'true';
+    const threshold = 80;
+
+    if (!isTransparent || window.scrollY > threshold) {
+      if (!scrolled && isTransparent) {
+        scrolled = true;
+        navbarBg?.classList.remove('bg-transparent');
+        navbarBg?.classList.add('bg-bg');
+        navbar?.classList.add('shadow-sm', 'border-b', 'border-gray-200/60');
+        
+        navbarLogo?.classList.remove('text-white');
+        navbarLogo?.classList.add('text-primary');
+        
+        navLinks.forEach(link => {
+          link.classList.remove('text-white/90', 'hover:text-white', 'text-white/80');
+          link.classList.add('text-gray-700', 'hover:text-primary');
+        });
+
+        if (navbarCta) {
+          navbarCta.classList.remove('bg-white/15', 'hover:bg-white', 'text-white', 'hover:text-primary', 'border-white/40', 'hover:border-white');
+          navbarCta.classList.add('bg-primary', 'hover:bg-secondary', 'text-white', 'border-transparent');
+        }
+
+        if (mobileNavbarCta) {
+          mobileNavbarCta.classList.remove('bg-white/15', 'text-white', 'border-white/40');
+          mobileNavbarCta.classList.add('bg-primary', 'text-white', 'border-transparent');
+        }
+
+        // Update mobile btn color
+        btn?.classList.remove('text-white');
+        btn?.classList.add('text-primary');
+      }
+    } else {
+      if (scrolled) {
+        scrolled = false;
+        navbarBg?.classList.add('bg-transparent');
+        navbarBg?.classList.remove('bg-bg');
+        navbar?.classList.remove('shadow-sm', 'border-b', 'border-gray-200/60');
+        
+        navbarLogo?.classList.add('text-white');
+        navbarLogo?.classList.remove('text-primary');
+        
+        navLinks.forEach(link => {
+          if (link.tagName === 'BUTTON') {
+             link.classList.add('text-white/80', 'hover:text-white');
+          } else {
+             link.classList.add('text-white/90', 'hover:text-white');
+          }
+          link.classList.remove('text-gray-700', 'hover:text-primary');
+        });
+
+        if (navbarCta) {
+          navbarCta.classList.add('bg-white/15', 'hover:bg-white', 'text-white', 'hover:text-primary', 'border-white/40', 'hover:border-white');
+          navbarCta.classList.remove('bg-primary', 'hover:bg-secondary', 'border-transparent');
+        }
+
+        if (mobileNavbarCta) {
+          mobileNavbarCta.classList.add('bg-white/15', 'text-white', 'border-white/40');
+          mobileNavbarCta.classList.remove('bg-primary', 'text-white', 'border-transparent');
+        }
+
+        btn?.classList.add('text-white');
+        btn?.classList.remove('text-primary');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  // We only run this initially if we need to set scrolled state
+  // because the server render already sets the correct classes
+  if (document.body.dataset.transparentNavbar === 'true') {
+    updateNavbar();
+  }
+</script>

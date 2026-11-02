@@ -1,0 +1,62 @@
+---
+import { ArrowUpRight, Mail } from "lucide-astro";
+---
+<footer class="bg-primary text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-12">
+      <!-- Brand -->
+      <div class="space-y-6">
+        <a href="/" class="inline-flex font-display text-3xl tracking-wide hover:text-highlight transition-colors" aria-label="FindPath — Beranda">FindPath</a>
+        <p class="text-gray-300 text-sm leading-relaxed pr-4">
+          Travel agency terpercaya yang membantu wisatawan Indonesia menjelajahi keajaiban Kalimantan secara terjangkau, autentik, dan bertanggung jawab.
+        </p>
+      </div>
+
+      <!-- Jelajahi -->
+      <div>
+        <h4 class="font-bold text-lg mb-6">Jelajahi</h4>
+        <ul class="space-y-4">
+          <li><a href="/paket-tour" class="text-gray-300 hover:text-white transition-colors text-sm">Paket Tour</a></li>
+          <li><a href="/booking" class="text-gray-300 hover:text-white transition-colors text-sm">Booking Tour</a></li>
+          <li><a href="/destinasi" class="text-gray-300 hover:text-white transition-colors text-sm">Semua Destinasi</a></li>
+          <li><a href="/tentang-kami" class="text-gray-300 hover:text-white transition-colors text-sm">Tentang Kami</a></li>
+          <li><a href="/kontak" class="text-gray-300 hover:text-white transition-colors text-sm">Kontak</a></li>
+        </ul>
+      </div>
+
+      <!-- Destinasi -->
+      <div>
+        <h4 class="font-bold text-lg mb-6">Destinasi</h4>
+        <ul class="space-y-4">
+          <li><a href="/destinasi?provinsi=Kalimantan Barat" class="text-gray-300 hover:text-white transition-colors text-sm">Kalimantan Barat</a></li>
+          <li><a href="/destinasi?provinsi=Kalimantan Tengah" class="text-gray-300 hover:text-white transition-colors text-sm">Kalimantan Tengah</a></li>
+          <li><a href="/destinasi?provinsi=Kalimantan Selatan" class="text-gray-300 hover:text-white transition-colors text-sm">Kalimantan Selatan</a></li>
+          <li><a href="/destinasi?provinsi=Kalimantan Timur" class="text-gray-300 hover:text-white transition-colors text-sm">Kalimantan Timur</a></li>
+          <li><a href="/destinasi?provinsi=Kalimantan Utara" class="text-gray-300 hover:text-white transition-colors text-sm">Kalimantan Utara</a></li>
+        </ul>
+      </div>
+
+      <!-- Hubungi Kami -->
+      <div>
+        <h4 class="font-bold text-lg mb-6">Hubungi Kami</h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3">
+            <Mail className="w-5 h-5 text-highlight shrink-0" />
+            <a href="mailto:halo@findpath.id" class="text-gray-300 hover:text-white transition-colors text-sm">halo@findpath.id</a>
+          </li>
+          <li><a href="/kontak" class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors text-sm">Lihat semua informasi kontak <ArrowUpRight className="w-4 h-4" /></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-700/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-gray-400 text-sm">
+        &copy; {new Date().getFullYear()} FindPath. Hak Cipta Dilindungi.
+      </p>
+      <div class="flex gap-6 text-sm">
+        <a href="/syarat-ketentuan" class="text-gray-400 hover:text-white transition-colors">Syarat & Ketentuan</a>
+        <a href="/kebijakan-privasi" class="text-gray-400 hover:text-white transition-colors">Kebijakan Privasi</a>
+      </div>
+    </div>
+  </div>
+</footer>

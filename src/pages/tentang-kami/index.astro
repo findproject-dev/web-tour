@@ -1,0 +1,127 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Leaf, Users, Map, Heart, ChevronRight } from "lucide-astro";
+---
+
+<Layout title="Tentang Kami — Spesialis Wisata Kalimantan | FindPath" description="FindPath membantu wisatawan Indonesia menemukan pengalaman Kalimantan yang lebih autentik, terjangkau, dan memorable." transparentNavbar={true}>
+  
+  <!-- Hero -->
+  <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/brand_story.jpg" alt="Sungai Kalimantan" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+      <h1 class="font-display text-5xl md:text-7xl mb-6">Mengenal FindPath</h1>
+      <p class="text-xl text-gray-200 font-light max-w-2xl mx-auto">Mitra perjalanan lokal terpercaya yang mengerti Kalimantan lebih dari sekadar titik di peta.</p>
+    </div>
+  </section>
+
+  <!-- Who We Are & Story -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <h2 class="font-display text-3xl sm:text-4xl text-primary mb-6">Cerita Kami</h2>
+          <div class="prose prose-lg text-gray-600 leading-relaxed">
+            <p>FindPath lahir dari rasa cinta yang mendalam terhadap Kalimantan — dan keyakinan bahwa setiap orang berhak merasakan keajaiban pulau ini.</p>
+            <p>Kami melihat banyak orang menganggap Kalimantan terlalu jauh, terlalu mahal, atau sekadar tujuan bisnis. Padahal, Kalimantan menyimpan sisi liar yang begitu menenangkan: pagi hari di atas perahu klotok, kabut tipis di atas Sungai Mahakam, dan harmoni budaya Dayak yang selaras dengan alam.</p>
+            <p>Kami hadir bukan dengan paket mewah yang menguras tabungan, dan bukan dengan itinerary terburu-buru yang melupakan esensi perjalanan. Kami merancang perjalanan yang bermakna, terjangkau, dan benar-benar membuat Anda pulang membawa cerita.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <img src="/images/exp_orangutan.jpg" alt="Tanjung Puting" class="rounded-2xl w-full h-48 sm:h-64 object-cover mt-4 sm:mt-8" />
+          <img src="/images/tours/tour-loksado-day-adventure.jpg" alt="Loksado" class="rounded-2xl w-full h-48 sm:h-64 object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="py-16 sm:py-24 bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 text-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-4xl mx-auto">
+        <div class="bg-white p-6 sm:p-10 rounded-3xl shadow-sm border border-gray-100">
+          <Map className="w-10 sm:w-12 h-10 sm:h-12 text-accent mx-auto mb-4 sm:mb-6" />
+          <h3 class="font-display text-2xl sm:text-3xl text-primary mb-3 sm:mb-4">Misi Kami</h3>
+          <p class="text-gray-600 leading-relaxed text-sm sm:text-base">Membuat pengalaman wisata Kalimantan terjangkau, bermakna, dan bertanggung jawab bagi setiap wisatawan Indonesia.</p>
+        </div>
+        <div class="bg-white p-6 sm:p-10 rounded-3xl shadow-sm border border-gray-100">
+          <Heart className="w-10 sm:w-12 h-10 sm:h-12 text-accent mx-auto mb-4 sm:mb-6" />
+          <h3 class="font-display text-2xl sm:text-3xl text-primary mb-3 sm:mb-4">Visi Kami</h3>
+          <p class="text-gray-600 leading-relaxed text-sm sm:text-base">Menjadi travel agency terpercaya nomor satu untuk wisata Kalimantan, yang dikenal karena kualitas pengalaman autentik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics -->
+  <section class="py-16 sm:py-20 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center divide-x divide-white/10">
+        <div>
+          <p class="font-display text-4xl md:text-5xl text-highlight mb-2">5</p>
+          <p class="text-sm text-gray-300 uppercase tracking-wider">Provinsi</p>
+        </div>
+        <div>
+          <p class="font-display text-4xl md:text-5xl text-highlight mb-2">25+</p>
+          <p class="text-sm text-gray-300 uppercase tracking-wider">Destinasi</p>
+        </div>
+        <div>
+          <p class="font-display text-4xl md:text-5xl text-highlight mb-2">50+</p>
+          <p class="text-sm text-gray-300 uppercase tracking-wider">Pengalaman</p>
+        </div>
+        <div>
+          <p class="font-display text-4xl md:text-5xl text-highlight mb-2">1.5k</p>
+          <p class="text-sm text-gray-300 uppercase tracking-wider">Wisatawan</p>
+        </div>
+        <div class="col-span-2 md:col-span-1 border-l-0 md:border-l border-white/10 pt-8 md:pt-0">
+          <p class="font-display text-4xl md:text-5xl text-highlight mb-2">4.9</p>
+          <p class="text-sm text-gray-300 uppercase tracking-wider">Rating</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsible Travel -->
+  <section id="responsible-travel" class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <Leaf className="w-10 sm:w-12 h-10 sm:h-12 text-accent mx-auto mb-4 sm:mb-6" />
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl text-primary mb-4 sm:mb-6">Perjalanan yang Bertanggung Jawab</h2>
+        <p class="text-gray-600 text-base sm:text-lg leading-relaxed">Alam Kalimantan begitu indah sekaligus rapuh. Kami berkomitmen untuk menjaga kelestarian bumi Borneo melalui praktik wisata yang menghormati alam dan memberdayakan komunitas lokal.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-center">
+          <h4 class="font-bold text-gray-900 mb-3">Hormati Komunitas</h4>
+          <p class="text-sm text-gray-600">Berinteraksi dengan etika, menghormati adat istiadat, dan memastikan pariwisata membawa dampak positif bagi ekonomi warga lokal.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-center">
+          <h4 class="font-bold text-gray-900 mb-3">Jaga Satwa Liar</h4>
+          <p class="text-sm text-gray-600">Mengamati tanpa mengganggu. Kami tidak mendukung atraksi yang mengeksploitasi satwa, biarkan mereka hidup bebas di habitatnya.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-center">
+          <h4 class="font-bold text-gray-900 mb-3">Kurangi Jejak Ekologi</h4>
+          <p class="text-sm text-gray-600">Meminimalkan penggunaan plastik sekali pakai, mengelola sampah perjalanan dengan benar, dan menggunakan sumber daya lokal.</p>
+        </div>
+        <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-center">
+          <h4 class="font-bold text-gray-900 mb-3">Dukung Bisnis Lokal</h4>
+          <p class="text-sm text-gray-600">Kami bermitra langsung dengan pemandu lokal, pemilik klotok, dan penginapan masyarakat untuk memastikan perputaran ekonomi yang adil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 bg-bg text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="font-display text-4xl text-primary mb-6">Jelajahi Kalimantan Bersama Kami</h2>
+      <p class="text-gray-600 mb-10 text-lg">Temukan sisi liarmu dan ciptakan kenangan tak terlupakan di Borneo.</p>
+      <a href="/paket-tour" class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-medium transition-all transform hover:scale-105 active:scale-95 text-lg">
+        Lihat Paket Tour <ChevronRight className="w-5 h-5" />
+      </a>
+    </div>
+  </section>
+
+</Layout>

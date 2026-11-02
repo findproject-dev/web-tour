@@ -1,0 +1,298 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Search, SlidersHorizontal, ChevronRight, Star, Compass } from "lucide-astro";
+import { tours } from '../../data/tours';
+
+const prices = [
+  { label: "Di bawah Rp1 juta", value: "0-1000000" },
+  { label: "Rp1–3 juta", value: "1000000-3000000" },
+  { label: "Rp3–5 juta", value: "3000000-5000000" },
+  { label: "Di atas Rp5 juta", value: "5000000-99999999" }
+];
+
+const durations = [
+  { label: "1 hari", value: "1-1" },
+  { label: "2–3 hari", value: "2-3" },
+  { label: "4–5 hari", value: "4-5" },
+  { label: "6+ hari", value: "6-99" }
+];
+
+const tourTypes = [
+  { label: "Day Trip", value: "day-trip" },
+  { label: "Multi-Day", value: "multi-day" },
+  { label: "Private", value: "private" }
+];
+
+const provinces = ["Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan", "Kalimantan Timur", "Kalimantan Utara"];
+---
+
+<Layout title="Paket Tour Kalimantan — FindPath" description="Temukan paket tour terbaik untuk wisata Kalimantan. Affordable adventure, small group, dan authentic local experience.">
+  <!-- Header -->
+  <section class="pt-32 pb-14 sm:pb-16 bg-bg border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary mb-4 sm:mb-6">Pilih Petualanganmu</h1>
+      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl">Dari susur sungai setengah hari hingga ekspedisi pedalaman sepekan, temukan paket yang pas buat kamu.</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white min-h-[50vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      
+      <div class="flex flex-col lg:flex-row gap-8 xl:gap-12">
+        <!-- Sidebar Filters -->
+        <aside class="w-full lg:w-64 xl:w-72 shrink-0">
+          <!-- Mobile Filter Toggle -->
+          <button id="mobile-filter-toggle" class="lg:hidden w-full flex items-center justify-center gap-2 bg-gray-50 border border-gray-200 py-3 rounded-xl mb-6 text-gray-700 font-medium">
+            <SlidersHorizontal className="w-5 h-5" /> Filter Paket
+          </button>
+
+          <div id="filter-sidebar" class="hidden lg:block sticky top-28 space-y-8 bg-white lg:bg-transparent p-6 lg:p-0 rounded-2xl shadow-xl lg:shadow-none border border-gray-100 lg:border-none z-40">
+            <!-- Search -->
+            <div>
+              <div class="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input type="text" id="search-input" aria-label="Cari nama paket" placeholder="Cari nama paket..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent" />
+              </div>
+            </div>
+
+            <!-- Price -->
+            <div class="filter-group">
+              <h3 class="font-bold text-gray-900 mb-4">Harga</h3>
+              <div class="space-y-3">
+                {prices.map((p, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="price" value={p.value} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
+                    <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{p.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Duration -->
+            <div class="filter-group">
+              <h3 class="font-bold text-gray-900 mb-4">Durasi</h3>
+              <div class="space-y-3">
+                {durations.map((d, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="duration" value={d.value} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
+                    <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{d.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Tour Type -->
+            <div class="filter-group">
+              <h3 class="font-bold text-gray-900 mb-4">Jenis Tour</h3>
+              <div class="space-y-3">
+                {tourTypes.map((t, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="type" value={t.value} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
+                    <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{t.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <!-- Province -->
+            <div class="filter-group">
+              <h3 class="font-bold text-gray-900 mb-4">Provinsi</h3>
+              <div class="space-y-3">
+                {provinces.map((prov, i) => (
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" name="province" value={prov} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
+                    <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{prov}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <button id="clear-filters" class="w-full py-3 text-sm font-medium text-gray-500 hover:text-primary transition-colors">
+              Reset Semua Filter
+            </button>
+            <button id="close-mobile-filter" class="lg:hidden w-full py-3 bg-primary text-white rounded-xl font-medium mt-4">
+              Terapkan Filter
+            </button>
+          </div>
+        </aside>
+
+        <!-- Listing -->
+        <div class="flex-1 min-w-0">
+          <div class="flex justify-between items-center mb-8">
+            <p class="text-gray-600 font-medium"><span id="result-count">{tours.length}</span> paket tour ditemukan</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8" id="tours-grid">
+            {tours.map(tour => (
+              <a href={`/paket-tour/${tour.slug}`} class="tour-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 flex flex-col h-full" data-price={tour.price} data-duration={tour.durationDays} data-type={tour.type} data-prov={tour.province} data-name={tour.name.toLowerCase()}>
+                <div class="relative aspect-[4/3] overflow-hidden">
+                  <img src={tour.heroImage} alt={tour.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-primary">
+                    {tour.duration}
+                  </div>
+                  {tour.type === 'private' && (
+                    <div class="absolute top-4 right-4 bg-accent/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-white">
+                      Custom
+                    </div>
+                  )}
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">{tour.province}</span>
+                    <div class="flex items-center gap-1 text-highlight">
+                      <Star className="w-3.5 h-3.5 fill-current" />
+                      <span class="text-sm font-medium text-gray-700">{tour.rating} <span class="text-gray-400 font-normal">({tour.reviewCount})</span></span>
+                    </div>
+                  </div>
+                  <h3 class="font-display text-2xl text-primary mb-2 line-clamp-1 group-hover:text-accent transition-colors">{tour.name}</h3>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2 flex-grow">{tour.shortDescription}</p>
+                  
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {tour.highlights.slice(0,3).map(h => (
+                      <span class="bg-gray-50 border border-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-md whitespace-nowrap">{h}</span>
+                    ))}
+                  </div>
+                  
+                  <div class="border-t border-gray-100 pt-4 mt-auto">
+                    <p class="text-sm text-gray-500 mb-1">Mulai dari</p>
+                    <div class="flex items-end justify-between">
+                      <p class="text-xl font-bold text-primary">{tour.priceDisplay}<span class="text-sm font-normal text-gray-500"> {tour.priceUnit.replace('per', '/')}</span></p>
+                      <div class="w-8 h-8 rounded-full bg-bg flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors text-primary">
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="hidden text-center py-24 bg-gray-50 rounded-2xl border border-dashed border-gray-200 mt-8">
+            <Compass className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+            <h3 class="font-display text-3xl text-primary mb-2">Paket Tidak Ditemukan</h3>
+            <p class="text-gray-500 max-w-md mx-auto">Kami tidak menemukan paket yang cocok dengan kombinasi filter Anda. Coba kurangi kriteria pencarian.</p>
+            <button id="empty-reset" class="mt-6 bg-primary hover:bg-secondary transition-colors text-white px-6 py-2.5 rounded-full font-medium">Reset Filter</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const priceCb = document.querySelectorAll('input[name="price"]') as NodeListOf<HTMLInputElement>;
+    const durationCb = document.querySelectorAll('input[name="duration"]') as NodeListOf<HTMLInputElement>;
+    const typeCb = document.querySelectorAll('input[name="type"]') as NodeListOf<HTMLInputElement>;
+    const provCb = document.querySelectorAll('input[name="province"]') as NodeListOf<HTMLInputElement>;
+    
+    const cards = document.querySelectorAll('.tour-card') as NodeListOf<HTMLElement>;
+    const resultCount = document.getElementById('result-count');
+    const clearBtn = document.getElementById('clear-filters');
+    const emptyState = document.getElementById('empty-state');
+    const emptyReset = document.getElementById('empty-reset');
+    const grid = document.getElementById('tours-grid');
+
+    const mobileToggle = document.getElementById('mobile-filter-toggle');
+    const closeMobileBtn = document.getElementById('close-mobile-filter');
+    const sidebar = document.getElementById('filter-sidebar');
+
+    mobileToggle?.addEventListener('click', () => {
+      sidebar?.classList.toggle('hidden');
+      sidebar?.classList.add('absolute', 'w-full', 'top-full', 'mt-4');
+    });
+    closeMobileBtn?.addEventListener('click', () => {
+      sidebar?.classList.add('hidden');
+    });
+
+    // Read URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialProv = urlParams.get('provinsi');
+    const initialType = urlParams.get('tipe');
+    const initialQ = urlParams.get('q');
+    
+    if (initialProv && initialProv !== "") {
+      provCb.forEach(cb => {
+        if (cb.value === initialProv) cb.checked = true;
+      });
+    }
+    if (initialType && initialType !== "") {
+      typeCb.forEach(cb => {
+        if (cb.value === initialType) cb.checked = true;
+      });
+    }
+    if (initialQ && initialQ !== "") {
+      searchInput.value = initialQ;
+    }
+
+    function checkRange(val: number, rangeStr: string) {
+      const [min, max] = rangeStr.split('-').map(Number);
+      return val >= min && val <= max;
+    }
+
+    function getCheckedValues(nodelist: NodeListOf<HTMLInputElement>) {
+      return Array.from(nodelist).filter(cb => cb.checked).map(cb => cb.value);
+    }
+
+    function filterCards() {
+      const searchVal = searchInput.value.toLowerCase();
+      const activePrices = getCheckedValues(priceCb);
+      const activeDurations = getCheckedValues(durationCb);
+      const activeTypes = getCheckedValues(typeCb);
+      const activeProvs = getCheckedValues(provCb);
+      
+      let count = 0;
+
+      cards.forEach(card => {
+        const name = card.dataset.name || '';
+        const price = Number(card.dataset.price) || 0;
+        const dur = Number(card.dataset.duration) || 0;
+        const type = card.dataset.type || '';
+        const prov = card.dataset.prov || '';
+
+        const matchSearch = name.includes(searchVal);
+        const matchPrice = activePrices.length === 0 || activePrices.some(range => checkRange(price, range));
+        const matchDur = activeDurations.length === 0 || activeDurations.some(range => checkRange(dur, range));
+        const matchType = activeTypes.length === 0 || activeTypes.includes(type) || (activeTypes.includes('private') && type === 'private' || activeTypes.includes('multi-day') && type === 'multi-day' || activeTypes.includes('day-trip') && type === 'day-trip' ); // Note: simple match is fine
+        const matchProv = activeProvs.length === 0 || activeProvs.includes(prov) || activeProvs.includes("Semua");
+
+        if (matchSearch && matchPrice && matchDur && matchType && matchProv) {
+          card.style.display = 'flex';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (resultCount) resultCount.textContent = count.toString();
+      
+      if (count === 0) {
+        grid?.classList.add('hidden');
+        emptyState?.classList.remove('hidden');
+      } else {
+        grid?.classList.remove('hidden');
+        emptyState?.classList.add('hidden');
+      }
+    }
+
+    const allInputs = [...Array.from(priceCb), ...Array.from(durationCb), ...Array.from(typeCb), ...Array.from(provCb)];
+    allInputs.forEach(input => input.addEventListener('change', filterCards));
+    searchInput?.addEventListener('input', filterCards);
+
+    const resetAll = () => {
+      searchInput.value = '';
+      allInputs.forEach(input => input.checked = false);
+      window.history.replaceState({}, '', '/paket-tour');
+      filterCards();
+    };
+
+    clearBtn?.addEventListener('click', resetAll);
+    emptyReset?.addEventListener('click', resetAll);
+
+    // Initial run
+    filterCards();
+  });
+</script>

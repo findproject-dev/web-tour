@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { MapPin, Mail, MessageCircle, ChevronDown } from "lucide-astro";
+
+const faqs = [
+  { q: "Bagaimana cara memesan tour?", a: "Sangat mudah! Pilih paket yang Anda inginkan, klik 'Pesan Sekarang', isi formulir booking secara online, dan tim kami akan segera menghubungi Anda via WhatsApp untuk konfirmasi dan detail pembayaran." },
+  { q: "Apakah itinerary bisa disesuaikan?", a: "Ya, kami sangat fleksibel. Terutama untuk paket 'Build Your Borneo' (Private Tour), itinerary bisa disesuaikan 100% dengan preferensi Anda. Untuk paket reguler, beberapa penyesuaian kecil mungkin dilakukan tergantung kondisi lapangan." },
+  { q: "Apakah tour cocok untuk keluarga?", a: "Tentu! Banyak destinasi kami yang family-friendly. Kami akan merekomendasikan paket yang aman dan nyaman untuk anak-anak, dengan durasi perjalanan darat/sungai yang wajar." },
+  { q: "Apa saja yang sudah termasuk dalam paket?", a: "Secara umum, paket kami mencakup akomodasi, makan sesuai jadwal, pemandu lokal, transportasi (mobil/perahu/klotok), dan tiket masuk kawasan. Silakan periksa halaman detail masing-masing paket untuk rincian pastinya." },
+  { q: "Apakah tersedia private tour?", a: "Ya, kami menyediakan opsi Private Tour bagi Anda yang menginginkan privasi lebih atau itinerary khusus tanpa digabung dengan grup lain." },
+  { q: "Apa yang perlu dibawa?", a: "Kami menyarankan pakaian yang nyaman dan menyerap keringat, sepatu trekking atau sandal gunung, topi, tabir surya, obat-obatan pribadi, lotion anti nyamuk, dan jas hujan ringan. Daftar barang bawaan detail akan kami kirimkan setelah konfirmasi booking." },
+  { q: "Apakah tersedia airport transfer?", a: "Ya, sebagian besar paket kami sudah termasuk penjemputan dan pengantaran ke bandara terdekat dari titik mulai tour." },
+  { q: "Bagaimana jika cuaca mengganggu perjalanan?", a: "Keselamatan adalah prioritas utama. Jika cuaca sangat buruk dan membahayakan (misal badai di laut/sungai), kami akan menyesuaikan itinerary atau menawarkan alternatif aktivitas lain yang aman." }
+];
+---
+
+<Layout title="Kontak & FAQ — FindPath" description="Hubungi FindPath untuk merancang perjalanan wisata Kalimantan Anda atau temukan jawaban atas pertanyaan umum di FAQ kami.">
+  
+  <section class="pt-32 pb-14 sm:pb-16 bg-bg border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 text-center">
+      <h1 class="font-display text-4xl sm:text-5xl md:text-6xl text-primary mb-4 sm:mb-6">Hubungi Kami</h1>
+      <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Tim lokal kami siap membantu Anda merencanakan petualangan tak terlupakan di Borneo.</p>
+    </div>
+  </section>
+
+  <section class="py-12 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        
+        <!-- Contact Info -->
+        <div class="space-y-12">
+          <div>
+            <h2 class="font-display text-3xl text-primary mb-8">Informasi Kontak</h2>
+            <div class="space-y-8">
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 shrink-0">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-1">WhatsApp (Fast Response)</h4>
+                  <p class="text-gray-500 text-sm mb-2">Senin - Minggu, 08:00 - 20:00 WIB</p>
+                  <a href="https://wa.me/6281234567890" target="_blank" class="text-lg font-medium text-primary hover:text-accent transition-colors">+62 812 3456 7890</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-1">Email</h4>
+                  <p class="text-gray-500 text-sm mb-2">Untuk partnership & custom tour</p>
+                  <a href="mailto:halo@findpath.id" class="text-lg font-medium text-primary hover:text-accent transition-colors">halo@findpath.id</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 shrink-0">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 mb-1">Kantor Pusat</h4>
+                  <p class="text-gray-600 leading-relaxed max-w-xs">Jl. Khatulistiwa No. 123, Kota Pontianak, Kalimantan Barat, Indonesia</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <!-- FAQ -->
+        <div>
+          <h2 class="font-display text-3xl text-primary mb-8">Pertanyaan Umum (FAQ)</h2>
+          <div class="space-y-4">
+            {faqs.map((faq, i) => (
+              <div class="faq-item bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden transition-all duration-300">
+                <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset" aria-expanded="false">
+                  <span class="font-bold text-gray-900">{faq.q}</span>
+                  <ChevronDown className="w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0 ml-4" />
+                </button>
+                <div class="faq-content hidden px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-100/0">
+                  <p class="pt-2">{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqBtns = document.querySelectorAll('.faq-btn');
+    
+    faqBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item') as HTMLElement;
+        const content = item.querySelector('.faq-content') as HTMLElement;
+        const icon = btn.querySelector('.lucide-chevron-down') as HTMLElement;
+        const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            const otherBtn = otherItem.querySelector('.faq-btn');
+            const otherContent = otherItem.querySelector('.faq-content');
+            const otherIcon = otherItem.querySelector('.lucide-chevron-down');
+            
+            otherBtn?.setAttribute('aria-expanded', 'false');
+            otherContent?.classList.add('hidden');
+            otherIcon?.classList.remove('rotate-180');
+            otherItem.classList.remove('bg-white', 'shadow-sm');
+            otherItem.classList.add('bg-gray-50');
+          }
+        });
+
+        // Toggle current FAQ
+        if (isExpanded) {
+          btn.setAttribute('aria-expanded', 'false');
+          content.classList.add('hidden');
+          icon.classList.remove('rotate-180');
+          item.classList.remove('bg-white', 'shadow-sm');
+          item.classList.add('bg-gray-50');
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          content.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+          item.classList.remove('bg-gray-50');
+          item.classList.add('bg-white', 'shadow-sm');
+        }
+      });
+    });
+  });
+</script>
