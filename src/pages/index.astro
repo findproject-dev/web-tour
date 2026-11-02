@@ -120,6 +120,27 @@ const testimonials = [
 ---
 
 <Layout title="FindPath — Temukan Sisi Liarmu di Kalimantan" transparentNavbar={true}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "FindPath",
+    "url": "https://findpath.id",
+    "description": "Temukan pengalaman wisata Kalimantan yang terjangkau dan autentik. Jelajahi alam, budaya, dan petualangan di Borneo bersama FindPath.",
+    "image": "https://findpath.id/images/hero_klotok_river.jpg",
+    "areaServed": {
+      "@type": "State",
+      "name": "Kalimantan",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "Indonesia"
+      }
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "availableLanguage": ["Indonesian", "English"]
+    }
+  })} />
   <section class="relative flex min-h-[88svh] items-end overflow-hidden bg-primary">
     <img
       src="/images/hero_klotok_river.jpg"
@@ -172,7 +193,7 @@ const testimonials = [
 
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 right-8 hidden lg:flex flex-col items-center gap-2 text-white/40">
-          <span class="text-[11px] uppercase tracking-widest rotate-90 origin-center mb-6 text-white/50">Scroll</span>
+          <span class="text-xs uppercase tracking-widest rotate-90 origin-center mb-6 text-white/50">Scroll</span>
           <div class="w-px h-12 bg-gradient-to-b from-white/50 to-transparent animate-pulse"></div>
         </div>
       </div>
@@ -267,7 +288,7 @@ const testimonials = [
           <img src={featuredDestinations[1].image} alt={featuredDestinations[1].province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-5 xl:p-6">
-            <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[1].count} Destinasi</span>
+            <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[1].count} Destinasi</span>
             <h3 class="font-display text-2xl xl:text-3xl text-white leading-tight">{featuredDestinations[1].province}</h3>
           </div>
           <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -282,7 +303,7 @@ const testimonials = [
           <img src={featuredDestinations[2].image} alt={featuredDestinations[2].province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-5 xl:p-6">
-            <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[2].count} Destinasi</span>
+            <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[2].count} Destinasi</span>
             <h3 class="font-display text-xl xl:text-2xl text-white leading-tight">{featuredDestinations[2].province.replace('Kalimantan ', 'Kal.')}</h3>
           </div>
           <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -297,7 +318,7 @@ const testimonials = [
           <img src={featuredDestinations[3].image} alt={featuredDestinations[3].province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-5 xl:p-6">
-            <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[3].count} Destinasi</span>
+            <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[3].count} Destinasi</span>
             <h3 class="font-display text-xl xl:text-2xl text-white leading-tight">{featuredDestinations[3].province.replace('Kalimantan ', 'Kal.')}</h3>
           </div>
           <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -312,7 +333,7 @@ const testimonials = [
           <img src={featuredDestinations[4].image} alt={featuredDestinations[4].province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
           <div class="absolute bottom-0 left-0 p-5 xl:p-6">
-            <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[4].count} Destinasi</span>
+            <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1 block">{featuredDestinations[4].count} Destinasi</span>
             <h3 class="font-display text-2xl xl:text-3xl text-white leading-tight">{featuredDestinations[4].province}</h3>
           </div>
           <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -330,7 +351,7 @@ const testimonials = [
             <img src={dest.image} alt={dest.province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-5">
-              <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1 block">{dest.count} Destinasi</span>
+              <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1 block">{dest.count} Destinasi</span>
               <h3 class="font-display text-2xl text-white mb-1 leading-tight">{dest.province}</h3>
               <p class="text-white/70 text-xs leading-snug line-clamp-1">{dest.tagline}</p>
             </div>
@@ -347,7 +368,7 @@ const testimonials = [
             <img src={dest.image} alt={dest.province} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent"></div>
             <div class="absolute bottom-0 left-0 p-5">
-              <span class="text-highlight text-[10px] font-bold uppercase tracking-wider mb-1.5 block">{dest.count} Destinasi</span>
+              <span class="text-highlight text-xs font-bold uppercase tracking-wider mb-1.5 block">{dest.count} Destinasi</span>
               <h3 class="font-display text-2xl text-white mb-1">{dest.province}</h3>
               <p class="text-white/70 text-xs leading-snug">{dest.tagline}</p>
             </div>
@@ -428,7 +449,7 @@ const testimonials = [
             <img src={exp.img} alt={exp.title} class="w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity group-hover:opacity-90"></div>
             <div class="absolute bottom-4 sm:bottom-5 left-4 sm:left-5 right-4 sm:right-5">
-              <p class="text-highlight text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1">{exp.subtitle}</p>
+              <p class="text-highlight text-xs font-semibold uppercase tracking-wider mb-1">{exp.subtitle}</p>
               <h3 class="font-display text-xl sm:text-2xl text-white leading-tight group-hover:text-highlight transition-colors">{exp.title}</h3>
             </div>
           </a>
@@ -465,12 +486,12 @@ const testimonials = [
               <img src={tour.heroImage} alt={tour.name} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
               <!-- Type badge -->
               <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full">
-                <span class="text-[10px] font-bold text-primary uppercase tracking-wider">{tour.duration}</span>
+                <span class="text-xs font-bold text-primary uppercase tracking-wider">{tour.duration}</span>
               </div>
               <!-- Availability badge -->
               {tour.availabilityStatus === 'limited' && (
                 <div class="absolute top-3 right-3 bg-orange-500/90 backdrop-blur-sm px-2.5 py-1 rounded-full">
-                  <span class="text-[10px] font-bold text-white uppercase tracking-wider">Terbatas</span>
+                  <span class="text-xs font-bold text-white uppercase tracking-wider">Terbatas</span>
                 </div>
               )}
             </div>
@@ -479,7 +500,7 @@ const testimonials = [
             <div class="p-5 flex flex-col flex-grow">
               <!-- Province + Rating -->
               <div class="flex items-center justify-between mb-2">
-                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{tour.province.replace('Kalimantan ', 'Kal. ')}</span>
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">{tour.province.replace('Kalimantan ', 'Kal. ')}</span>
                 <div class="flex items-center gap-1">
                   <Star className="w-3 h-3 fill-highlight text-highlight" />
                   <span class="text-xs font-semibold text-gray-600">{tour.rating}</span>
@@ -495,14 +516,14 @@ const testimonials = [
               <!-- Tags -->
               <div class="flex flex-wrap gap-1.5 mb-4">
                 {tour.highlights.slice(0, 2).map(h => (
-                  <span class="bg-gray-50 border border-gray-100 text-gray-500 text-[10px] px-2 py-0.5 rounded-md font-medium">{h}</span>
+                  <span class="bg-gray-50 border border-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-md font-medium">{h}</span>
                 ))}
               </div>
 
               <!-- Price + CTA -->
               <div class="border-t border-gray-50 pt-4 flex items-end justify-between">
                 <div>
-                  <p class="text-[10px] text-gray-400 mb-0.5 font-medium">Mulai dari</p>
+                  <p class="text-xs text-gray-400 mb-0.5 font-medium">Mulai dari</p>
                   <p class="text-base font-bold text-primary">{tour.priceDisplay} <span class="text-xs font-normal text-gray-400">/org</span></p>
                 </div>
                 <div class="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-primary flex items-center justify-center transition-colors">

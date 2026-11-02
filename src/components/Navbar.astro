@@ -39,8 +39,8 @@ const { transparentNavbar = false } = Astro.props;
 
       <!-- Mobile menu button -->
       <div class="flex items-center lg:hidden gap-3">
-        <a href="/booking" class={`px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm ${!transparentNavbar ? 'bg-primary text-white border-transparent' : 'bg-white/15 border border-white/40 text-white'}`} id="mobile-navbar-cta">Pesan</a>
-        <button id="mobile-menu-btn" class={`p-1.5 focus:outline-none ${!transparentNavbar ? 'text-primary' : 'text-white'}`} aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+        <a href="/booking" class={`min-h-[44px] px-5 py-2.5 inline-flex items-center rounded-full text-sm font-semibold backdrop-blur-sm ${!transparentNavbar ? 'bg-primary text-white border-transparent' : 'bg-white/15 border border-white/40 text-white'}`} id="mobile-navbar-cta">Pesan</a>
+        <button id="mobile-menu-btn" class={`w-11 h-11 flex items-center justify-center rounded-xl focus:outline-none transition-colors ${!transparentNavbar ? 'text-primary hover:bg-gray-100' : 'text-white hover:bg-white/10'}`} aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="menu-icon block"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
         </button>

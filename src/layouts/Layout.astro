@@ -8,36 +8,69 @@ export interface Props {
   description?: string;
   ogImage?: string;
   transparentNavbar?: boolean;
+  canonical?: string;
+  noindex?: boolean;
 }
 
 const { 
   title = "FindPath — Temukan Sisi Liarmu di Kalimantan", 
   description = "Temukan pengalaman wisata Kalimantan yang terjangkau dan autentik. Jelajahi alam, budaya, dan petualangan di Borneo bersama FindPath.",
   ogImage = "/images/hero_klotok_river.jpg",
-  transparentNavbar = false
+  transparentNavbar = false,
+  canonical,
+  noindex = false,
 } = Astro.props;
+
+const canonicalURL = canonical 
+  ? new URL(canonical, Astro.site).toString()
+  : new URL(Astro.url.pathname, Astro.site).toString();
+
+const ogImageURL = new URL(ogImage, Astro.site).toString();
 ---
 
 <!DOCTYPE html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    
+
+    <!-- Canonical & Robots -->
+    <link rel="canonical" href={canonicalURL} />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
+    <meta name="theme-color" content="#1a3626" />
+
+    <!-- Primary Meta -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={new URL(ogImage, Astro.site || Astro.url).toString()} />
-    
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="FindPath" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(ogImage, Astro.site || Astro.url).toString()} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Font preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body class="flex flex-col min-h-screen" data-transparent-navbar={transparentNavbar ? "true" : "false"}>
     <Navbar transparentNavbar={transparentNavbar} />

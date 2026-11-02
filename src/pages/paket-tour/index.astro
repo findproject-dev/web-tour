@@ -58,9 +58,9 @@ const provinces = ["Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan"
             <!-- Price -->
             <div class="filter-group">
               <h3 class="font-bold text-gray-900 mb-4">Harga</h3>
-              <div class="space-y-3">
+              <div class="space-y-1">
                 {prices.map((p, i) => (
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label class="flex items-center gap-3 cursor-pointer group py-2 px-1">
                     <input type="checkbox" name="price" value={p.value} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
                     <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{p.label}</span>
                   </label>
@@ -71,9 +71,9 @@ const provinces = ["Kalimantan Barat", "Kalimantan Tengah", "Kalimantan Selatan"
             <!-- Duration -->
             <div class="filter-group">
               <h3 class="font-bold text-gray-900 mb-4">Durasi</h3>
-              <div class="space-y-3">
+              <div class="space-y-1">
                 {durations.map((d, i) => (
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label class="flex items-center gap-3 cursor-pointer group py-2 px-1">
                     <input type="checkbox" name="duration" value={d.value} class="w-5 h-5 text-primary rounded border-gray-300 focus:ring-primary" />
                     <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{d.label}</span>
                   </label>

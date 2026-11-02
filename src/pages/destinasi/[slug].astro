@@ -19,16 +19,30 @@ const relatedToursData = dest.relatedTours
 ---
 
 <Layout title={`${dest.name} — Wisata ${dest.province} | FindPath`} description={dest.shortDescription} ogImage={dest.heroImage} transparentNavbar={true}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": dest.name,
+    "description": dest.longDescription || dest.shortDescription,
+    "image": `https://findpath.id${dest.heroImage}`,
+    "url": `https://findpath.id/destinasi/${dest.slug}`,
+    "touristType": dest.experienceTypes,
+    "containedInPlace": {
+      "@type": "State",
+      "name": dest.province,
+      "containedInPlace": { "@type": "Country", "name": "Indonesia" }
+    },
+  })} />
   
   <!-- Breadcrumb -->
   <div class="absolute top-24 left-0 w-full z-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-      <nav class="flex text-sm text-white/80 font-medium">
-        <a href="/" class="hover:text-white transition-colors">Beranda</a>
-        <span class="mx-2">/</span>
-        <a href="/destinasi" class="hover:text-white transition-colors">Destinasi</a>
-        <span class="mx-2">/</span>
-        <span class="text-white">{dest.name}</span>
+      <nav class="flex items-center text-sm text-white/80 font-medium py-1">
+        <a href="/" class="hover:text-white transition-colors py-2 px-1">Beranda</a>
+        <span class="mx-2 text-white/50">/</span>
+        <a href="/destinasi" class="hover:text-white transition-colors py-2 px-1">Destinasi</a>
+        <span class="mx-2 text-white/50">/</span>
+        <span class="text-white py-2 px-1">{dest.name}</span>
       </nav>
     </div>
   </div>
@@ -88,9 +102,9 @@ const relatedToursData = dest.relatedTours
                 <ImageIcon className="w-6 h-6 text-accent" /> Galeri Foto
               </h2>
               <div class="grid grid-cols-2 gap-4">
-                {dest.gallery.map(img => (
+                {dest.gallery.map((img, i) => (
                   <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100">
-                    <img src={img} alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={img} alt={`Foto galeri ${dest.name} ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </div>
                 ))}
               </div>

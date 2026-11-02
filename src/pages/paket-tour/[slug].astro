@@ -18,16 +18,49 @@ const relatedToursData = tour.relatedTours
 ---
 
 <Layout title={`${tour.name} — ${tour.duration} | FindPath`} description={tour.shortDescription} ogImage={tour.heroImage} transparentNavbar={true}>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": tour.name,
+    "description": tour.longDescription || tour.shortDescription,
+    "image": `https://findpath.id${tour.heroImage}`,
+    "url": `https://findpath.id/paket-tour/${tour.slug}`,
+    "touristType": "Adventure",
+    "itinerary": tour.itinerary?.map((item) => ({
+      "@type": "TouristAttraction",
+      "name": item.title,
+      "description": item.description,
+    })),
+    "offers": {
+      "@type": "Offer",
+      "price": tour.price,
+      "priceCurrency": "IDR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": tour.price,
+        "priceCurrency": "IDR",
+        "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "C62" }
+      },
+      "seller": { "@type": "TravelAgency", "name": "FindPath", "url": "https://findpath.id" }
+    },
+    "aggregateRating": tour.rating ? {
+      "@type": "AggregateRating",
+      "ratingValue": tour.rating,
+      "bestRating": 5,
+      "worstRating": 1,
+      "ratingCount": tour.reviewCount || 10,
+    } : undefined,
+  })} />
   
   <!-- Breadcrumb -->
   <div class="absolute top-24 left-0 w-full z-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
-      <nav class="flex text-sm text-white/80 font-medium overflow-x-auto hide-scrollbar whitespace-nowrap">
-        <a href="/" class="hover:text-white transition-colors">Beranda</a>
-        <span class="mx-2">/</span>
-        <a href="/paket-tour" class="hover:text-white transition-colors">Paket Tour</a>
-        <span class="mx-2">/</span>
-        <span class="text-white">{tour.name}</span>
+      <nav class="flex items-center text-sm text-white/80 font-medium overflow-x-auto hide-scrollbar whitespace-nowrap py-1">
+        <a href="/" class="hover:text-white transition-colors py-2 px-1">Beranda</a>
+        <span class="mx-2 text-white/50">/</span>
+        <a href="/paket-tour" class="hover:text-white transition-colors py-2 px-1">Paket Tour</a>
+        <span class="mx-2 text-white/50">/</span>
+        <span class="text-white py-2 px-1">{tour.name}</span>
       </nav>
     </div>
   </div>
@@ -176,9 +209,9 @@ const relatedToursData = tour.relatedTours
                 <ImageIcon className="w-6 h-6 text-accent" /> Galeri Tour
               </h2>
               <div class="grid grid-cols-2 gap-4">
-                {tour.gallery.map(img => (
+                {tour.gallery.map((img, i) => (
                   <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
-                    <img src={img} alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    <img src={img} alt={`Foto galeri ${tour.name} ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
                   </div>
                 ))}
               </div>

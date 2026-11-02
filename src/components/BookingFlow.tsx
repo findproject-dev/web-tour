@@ -153,7 +153,7 @@ export default function BookingFlow({ tours }: Props) {
             <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 space-y-6">
               <div className="flex items-start gap-4 pb-6 border-b border-gray-200">
                 <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0">
-                  <img src={activeTour?.heroImage} alt="" className="w-full h-full object-cover" />
+                  <img src={activeTour?.heroImage} alt={activeTour?.name ?? "Foto tour"} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-1">{activeTour?.name}</h3>
