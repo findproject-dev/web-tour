@@ -37,11 +37,11 @@ const experiences = ["Wildlife", "Beach", "Culture", "Adventure", "River", "Fami
               <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-accent" /> Provinsi
               </h3>
-              <div class="space-y-2" id="province-filters">
+              <div class="space-y-1" id="province-filters">
                 {provinces.map((prov, i) => (
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label class="flex items-center gap-3 cursor-pointer group py-2 px-1">
                     <input type="radio" name="province" value={prov === "Semua" ? "all" : prov} checked={i === 0} class="w-5 h-5 text-primary border-gray-300 focus:ring-primary accent-primary" />
-                    <span class="text-gray-700 group-hover:text-primary transition-colors">{prov}</span>
+                    <span class="text-gray-700 group-hover:text-primary transition-colors text-sm">{prov}</span>
                   </label>
                 ))}
               </div>
@@ -85,7 +85,7 @@ const experiences = ["Wildlife", "Beach", "Culture", "Adventure", "River", "Fami
                 <div class="p-6">
                   <div class="flex flex-wrap gap-2 mb-3">
                     {dest.category.map(cat => (
-                      <span class="text-[10px] uppercase tracking-wider font-bold text-accent">{cat}</span>
+                      <span class="text-xs uppercase tracking-wider font-bold text-accent">{cat}</span>
                     ))}
                   </div>
                   <h3 class="font-display text-2xl text-primary mb-2 group-hover:text-accent transition-colors">{dest.name}</h3>
